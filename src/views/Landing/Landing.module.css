@@ -1,0 +1,44 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url('../../assets/landing-min.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+} 
+
+.button {
+    text-align: center;
+    display: flex;
+    justify-content: right;
+    padding: 17px;
+    background-color: #363d36;
+    border-radius: 7px;
+    border-color: transparent;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #3c503c;
+}
+
+.toHome{
+    text-decoration: none;
+
+}
+
+@media (min-width: 768px) {
+
+    .button{
+        padding: 18px;
+        font-size: 38px;
+    }
+
+    
+}
