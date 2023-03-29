@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    background-image: url('../../assets/landing-min.jpg');
+    background-image: url('../../assets/landing.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh; 
@@ -15,17 +15,21 @@
     display: flex;
     justify-content: right;
     padding: 17px;
-    background-color: #363d36;
+    background-color: rgba(0, 0, 0, 0.671);
     border-radius: 7px;
     border-color: transparent;
     font-size: 30px;
     font-weight: bold;
     color: white;
     cursor: pointer;
+    /* border: 1px solid #ffffff; */
+    
 }
 
+
+
 .button:hover{
-    background-color: #3c503c;
+    background-color: #b5b8b57a;
 }
 
 .toHome{
