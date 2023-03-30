@@ -1,9 +1,17 @@
-import style from './Nav.module.css'
+import { Link } from 'react-router-dom'
+import style from "./Nav.module.css"
+
 
 const Nav = () => {
+  
   return (
-    <div className= {style.container}>
-        <h1>Nav</h1>
+    <div >
+      <Link to="/home">
+        <button className={style.buttonNav}>Home</button>
+      </Link>
+      <Link to="/create">
+        <button className={style.buttonNav}>Create Activity</button>
+      </Link>
     </div>
   )
 }

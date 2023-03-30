@@ -8,8 +8,10 @@ const Landing = () => {
   return (
     <div className= {style.container}>
 
+      <h1 className= {style.title}>Welcome To Countries API</h1>
+
         <NavLink className= {style.toHome} to='/home'>
-          <button className= {style.button}>GO !</button>
+          <button className= {style.buttonLanding}>Let's Start !</button>
         </NavLink>
     </div>
   )
