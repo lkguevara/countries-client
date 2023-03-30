@@ -8,6 +8,7 @@
     background-size: cover;
     background-position: center;
     height: 100vh; 
+    
 } 
 
 .title{
@@ -16,7 +17,8 @@
     color: #ffffff;
     text-align: center;
     margin-bottom: 15px;
-    font-family: 'Delicious Handrawn', cursive;
+    font-family: 'popins', sans-serif;
+    
 }
 
 .buttonLanding {

@@ -18,11 +18,26 @@
     background-color: #e6e0d5;
 }
 
+.logoHome{
+    width: 70%;
+    height: 70%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+
 /* media queries */
 @media screen and (min-width: 768px) {
     .buttonNav{
         font-size: 20px;
         margin: 15px;
         padding: 10px;
+    }
+
+    .logoHome{
+        width: 50%;
+        height: 50%;
+        margin-top: 40px;
     }
 }
