@@ -6,7 +6,7 @@ const Nav = () => {
   
   return (
     <>
-      <div >
+      <div className={style.containerNav}>
         <Link to="/home">
           <button className={style.buttonNav}>Home</button>
         </Link>
@@ -14,7 +14,7 @@ const Nav = () => {
           <button className={style.buttonNav}>Create Activity</button>
         </Link>
       </div>
-      <img className={style.logoHome} src={logo} alt="earth" width='400px' />
+      <img className={style.logoHome} src={logo} alt="earth" />
     </>
     
   )

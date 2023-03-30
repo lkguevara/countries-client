@@ -1,0 +1,19 @@
+.containerHome{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    margin: 10px;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-items: center;
+} 
+
+/* mq */
+@media (min-width: 768px) {
+    .containerHome{
+        grid-template-columns: repeat(2, 1fr);
+        
+    }
+}
+
+
