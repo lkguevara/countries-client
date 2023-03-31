@@ -11,50 +11,69 @@ import Card from '../../components/Card/Card'
 import {getCountries} from '../../redux/actions'
 // imagenes
 import loadingCountry from '../../assets/loading.gif';
+import Paginate from '../../components/Paginate/Paginate'
 
 
 const Home = () => {
-  // dispatch y useSelector
   const dispatch = useDispatch();
+  // useSelector => get/countries
   const allCountries = useSelector((state) => state.countries);
   const loading = useSelector((state) => state.loading);
 
+  // useState paginado
+  const [currentPage, setCurrentPage] = useState(1); // Página actual que arranca en 1
+  const [countriesPage, setCountriesPage] = useState(10); // paises por página
+  const indexLastCountry = currentPage * countriesPage; // indice del último pais
+  const indexFirstCountry = indexLastCountry - countriesPage; // indice del primer pais 
+  const currentCountries = allCountries.slice(indexFirstCountry, indexLastCountry); // Const que guardará todos los personajes que vayan a haber por page. El slice lo que hace es cortar el array de paises y nos devuelve un array con los paises de la página actual
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber); // función para cambiar de página
+
   // useEffect
   useEffect(() => {
-    // !allCountries.length && dispatch (getCountries())
     dispatch (getCountries())
   }, []);
 
   return (
-    <div className={style.containerHome}>
-      <Filters />
-      
-      <Search />
+    <>
+
+      <div className={style.containerHome}>
+        <Filters />
+
+        <Search />
 
 
-    {
-      loading 
-      ? (
-          <div>
-            <img className= {style.loading} src={loadingCountry} alt="cargando" />
-          </div>
-        ) 
-      : 
-      allCountries?.map (country => {
-        return (
-          <Card 
-          key = {country.id}
-          image = {country.flag}
-          name = {country.name}
-          continent = {country.continent}
-        />
-        )
+      {
+        loading 
+        ? (
+            <div>
+              <img className= {style.loading} src={loadingCountry} alt="cargando" />
+            </div>
+          ) 
+        : 
         
-      })
-    }
+        currentCountries.map (country => {
+          return (
+            <Card 
+            key = {country.id}
+            image = {country.flag}
+            name = {country.name}
+            continent = {country.continent}
+          />
+          )
+          
+        })
+      }
 
 
-    </div>
+
+      </div>
+      <Paginate
+          countriesPage={countriesPage}
+          allCountries={allCountries.length}
+          paginate={paginate}
+      />
+    </>
   )
 }
 

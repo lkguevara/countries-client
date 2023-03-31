@@ -1,5 +1,5 @@
 // types
-import {GET_COUNTRIES, IS_LOADING} from './actions'
+import {GET_COUNTRIES, IS_LOADING, FILTER_CONTINENT,ORDER_ACTIVITY, ORDER_COUNTRY, ORDER_POPULATION} from './actions'
 
 // Estado inicial
 const initialState = {
