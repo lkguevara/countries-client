@@ -1,0 +1,48 @@
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eff5f8;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #3B5BA7;
+    cursor: pointer;
+    width: 50%;
+    margin: 0 auto;
+    margin: 40px 0 10px 0;
+}
+
+.card__image{
+    width: 60%;
+    height: 60%;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+}
+
+
+.card__title{
+    color: #565f81;
+    text-align: center;
+    font-weight: bold;
+}
+
+.card__continent{
+    color: #565f81;
+    text-align: center;
+    font-weight: normal;
+}
+ 
+
+.link{
+    text-decoration: none;
+}
+
+/* md */
+
+@media (min-width: 768px) { 
+    .container__cards{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

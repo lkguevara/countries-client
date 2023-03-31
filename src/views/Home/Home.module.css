@@ -8,11 +8,27 @@
     justify-items: center;
 } 
 
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 70%;
+    margin-top: 20px;
+
+}
+
+
+
 /* mq */
 @media (min-width: 768px) {
     .containerHome{
-        grid-template-columns: repeat(2, 1fr);
-        
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .loading{
+        width: 50%;
+
     }
 }
 

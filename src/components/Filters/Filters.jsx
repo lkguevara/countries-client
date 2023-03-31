@@ -3,7 +3,7 @@ import style from './Filters.module.css'
 const Filters = () => {
   return (
     <div className={style.filtersBar}>
-      <form>
+      <form className='form'>
       {/* filtro por continente */}
         <select name="continent" >
           <option value="sortType" disabled = "disabled" >Sort continent:</option>

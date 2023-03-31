@@ -1,17 +1,14 @@
 .filtersBar select{
     font-family: 'popins', sans-serif;
     font-size: 15px;
-    font-weight: bold;
+    /* font-weight: bold; */
     border: none;
-    background-color: #fff1dc4f;
+    background-color: #d4eaf5a1;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 6px;
     margin: 5px;
     padding: 5px;
     cursor: pointer;
-    color: #7b848a;
+    color: #565f81;
 
-}
-
-
-    
+}  
