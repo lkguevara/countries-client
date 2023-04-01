@@ -36,11 +36,14 @@ const Home = () => {
 
   return (
     <>
+      <div className={style.filters}>
+        <Filters/>
+        <Search />
+      </div>
+      
 
       <div className={style.containerHome}>
-        <Filters />
-
-        <Search />
+        
 
 
       {

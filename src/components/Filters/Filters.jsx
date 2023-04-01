@@ -19,7 +19,7 @@ const handleFilterContinent = (e) => {
 
   return (
     <div className={style.filtersBar}>
-      <form className='form'>
+      <form className={style.form}>
       {/* filtro por continente */}
         <select name="continent" onChange = {handleFilterContinent} >
           <option value="sortType" disabled = "disabled" >Sort continent:</option>
@@ -33,19 +33,25 @@ const handleFilterContinent = (e) => {
         </select>
 
       {/* ordenamiento asc - desc */}
-        <select  name='orderBy'>
-          <option value="sortType" disabled = "disabled" >Order by:</option>
-          <option value="alphabetically">Alphabetically</option>
-          <option value="population">Population</option>
-          <option value="activity">Time activity</option>
+        <select name='orderName'>
+          <option value="default" >Sort Alphabetically</option>
+          <option value="asc">Alphabetically ⬆️</option>
+          <option value="desc">Alphabetically ⬇️</option>
+        </select>
+
+        <select name='orderPopulation'>
+          <option value="default" >Sort Population</option>
+          <option value="asc">Population ⬆️</option>
+          <option value="desc">Population ⬇️</option>
+        </select>
+
+        <select name='orderActivity'>
+          <option value="default" disabled = "disabled" >Sort Activity</option>
+          <option value="asc">▶️3 horas</option>
+          <option value="desc">◀️3 horas</option>
         </select>
 
 
-        <input type="radio" id='ASC' name='order' value='ASC' defaultChecked/>
-        <label htmlFor='ASC'>⬆️</label>
-
-        <input type="radio" id='DES' name='order' value='DES'/>
-        <label htmlFor='DES'>⬇️</label>
       
       </form>
     </div>

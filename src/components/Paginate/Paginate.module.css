@@ -1,11 +1,15 @@
 
 .paginate__ul{
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     justify-content: center;
     align-items: center;
     list-style: none;
     padding: 0;
+    gap: 0px;
+    width: 50%;
+    margin: 0 auto;
+
 }
 
 .paginate__li{
@@ -13,14 +17,19 @@
     cursor: pointer;
     font-weight: bold;
     background-color: #d4eaf5a1;
-    padding: 4px 8px;
+    padding: 2px 4px;
     color: #565f81;
     font-size: 12px;
+    width: 20%;
 }
 
 @media (min-width: 768px) {
     .paginate__ul{
         display: flex;
         justify-content: center;
+    }
+
+    .paginate__li{
+        padding: 4px 8px;
     }
 }

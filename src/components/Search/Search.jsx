@@ -12,7 +12,7 @@ const Search = () => {
 }
 
   return (
-    <>
+    <div className={style.search}>
       <div className={style.searchBar}>
           <input placeholder="Search a country" type='search' />
           <button className={style.searchButton}>
@@ -21,16 +21,16 @@ const Search = () => {
       </div>
 
       {/* obtener todos los paises */}
-      <div className={style.searchBar}>
+      <div className={style.getCountries}>
           <button 
-            className={style.searchButton}
+            className={style.countriesButton}
             onClick={handleCountries}
 
           >
               Get all countries
           </button>  
       </div>
-    </>
+    </div>
     
   )
 }
