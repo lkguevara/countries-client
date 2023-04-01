@@ -43,6 +43,13 @@ export const orderCountry = (payload) => {
     }
 }
 
+// * ordenar población asc y desc
+export const orderPopulation = (payload) => {
+    return {
+        type: ORDER_POPULATION,
+        payload
+    }
+}
 // * filtrar por actividad turistica 
 export const orderActivity = (payload) => {
     return  {
@@ -51,13 +58,6 @@ export const orderActivity = (payload) => {
     }
 }
 
-// * ordenar población asc y desc
-export const orderPopulation = (payload) => {
-    return {
-        type: ORDER_POPULATION,
-        payload
-    }
-}
 
 
 

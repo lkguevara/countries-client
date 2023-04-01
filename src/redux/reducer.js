@@ -42,7 +42,6 @@ const rootReducer = (state = initialState, action) => {
         
         // * order country asc
         case ORDER_COUNTRY: 
-        
             let orderName = action.payload === 'asc' ? 
                 state.countries.sort((a, b) => {
                     if(a.name > b.name){
@@ -65,6 +64,15 @@ const rootReducer = (state = initialState, action) => {
             return{
                 ...state,
                 countries: orderName
+            }
+        // * order country asc
+        case ORDER_POPULATION: 
+            let orderPopulation = action.payload === 'asc' 
+                ? state.countries.sort((a, b) => a.population - b.population)
+                :state.countries.sort((a, b) => b.population - a.population)
+            return{
+                ...state,
+                countries: orderPopulation
             }
 
         // *Default
