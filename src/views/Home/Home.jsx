@@ -16,11 +16,11 @@ import Paginate from '../../components/Paginate/Paginate'
 
 const Home = () => {
   const dispatch = useDispatch();
-  // useSelector => get/countries
+  //* useSelector => get/countries
   const allCountries = useSelector((state) => state.countries);
   const loading = useSelector((state) => state.loading);
 
-  // useState paginado
+  //* useState paginado
   const [currentPage, setCurrentPage] = useState(1); // Página actual que arranca en 1
   const [countriesPage, setCountriesPage] = useState(10); // paises por página
   const indexLastCountry = currentPage * countriesPage; // indice del último pais
@@ -28,6 +28,8 @@ const Home = () => {
   const currentCountries = allCountries.slice(indexFirstCountry, indexLastCountry); // Const que guardará todos los personajes que vayan a haber por page. El slice lo que hace es cortar el array de paises y nos devuelve un array con los paises de la página actual
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber); // función para cambiar de página
+
+  const [order, setOrder] = useState('');
 
   // useEffect
   useEffect(() => {
@@ -37,7 +39,10 @@ const Home = () => {
   return (
     <>
       <div className={style.filters}>
-        <Filters/>
+        <Filters
+          setCurrentPage={setCurrentPage}
+          setOrder={setOrder}
+        />
         <Search />
       </div>
       
@@ -62,6 +67,7 @@ const Home = () => {
             image = {country.flag}
             name = {country.name}
             continent = {country.continent}
+            population = { country.population}
           />
           )
           

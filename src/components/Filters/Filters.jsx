@@ -1,21 +1,28 @@
 import style from './Filters.module.css'
 import { useDispatch } from 'react-redux'
 // import de las acciones del filtro u ordenamiento
-import { filterContinent } from '../../redux/actions'
+import { filterContinent, orderCountry } from '../../redux/actions'
 
 
 
-const Filters = () => {
+const Filters = ({setCurrentPage, setOrder}) => {
   const dispatch = useDispatch();
 
 
-  // handle filter continent
-const handleFilterContinent = (e) => {
-  e.preventDefault()
-  dispatch(filterContinent(e.target.value))
-  console.log(e.target.value)
-}
+//* handle filter continent
+  const handleFilterContinent = (e) => {
+    dispatch(filterContinent(e.target.value))
+    console.log(e.target.value)
+  }
 
+// *handle order country
+  const handleOrderCountries = (e) => {
+    dispatch(orderCountry(e.target.value))
+    console.log(e.target.value)
+    // setear la pagina en 1
+    setCurrentPage(1) 
+    setOrder(`order = ${e.target.value}`)
+  }
 
   return (
     <div className={style.filtersBar}>
@@ -33,7 +40,7 @@ const handleFilterContinent = (e) => {
         </select>
 
       {/* ordenamiento asc - desc */}
-        <select name='orderName'>
+        <select name='orderName' onChange = {handleOrderCountries}>
           <option value="default" >Sort Alphabetically</option>
           <option value="asc">Alphabetically ⬆️</option>
           <option value="desc">Alphabetically ⬇️</option>

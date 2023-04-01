@@ -39,6 +39,33 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: filterContinent
             }
+        
+        // * order country asc
+        case ORDER_COUNTRY: 
+        
+            let orderName = action.payload === 'asc' ? 
+                state.countries.sort((a, b) => {
+                    if(a.name > b.name){
+                        return 1;
+                    }
+                    if(b.name > a.name){
+                        return -1;
+                    }
+                    return 0;
+                }) :
+                state.countries.sort((a, b) => {
+                    if(a.name > b.name){
+                        return -1;
+                    }
+                    if(b.name > a.name){
+                        return 1;
+                    }
+                    return 0;
+                })
+            return{
+                ...state,
+                countries: orderName
+            }
 
         // *Default
         default:

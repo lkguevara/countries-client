@@ -34,18 +34,19 @@ export const filterContinent = (payload)  => {
     }
 }
 
-// * filtrar por actividad turistica 
-export const orderActivity = (payload) => {
-    return  {
-        type: ORDER_ACTIVITY,
-        payload
-    }
-}
 
 // * ordenar pais asc y desc
 export const orderCountry = (payload) => {
     return {
         type: ORDER_COUNTRY,
+        payload
+    }
+}
+
+// * filtrar por actividad turistica 
+export const orderActivity = (payload) => {
+    return  {
+        type: ORDER_ACTIVITY,
         payload
     }
 }
