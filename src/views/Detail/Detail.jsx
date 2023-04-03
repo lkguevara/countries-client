@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { getCountry, getActivities } from '../../redux/actions'
+import { getCountry, getActivities, getCountries } from '../../redux/actions'
 
 import style from './Detail.module.css'
 
@@ -13,14 +13,11 @@ import style from './Detail.module.css'
 	 const dispatch = useDispatch();
 	 
 	  const country = useSelector(state=>state.countries)
-    const activities = useSelector(state=>state.activities)
-    const allCountries = useSelector(state=>state.countries)
 	 const {id} = useParams()
 
 
   useEffect(() => {
     dispatch(getCountry(id))
-    dispatch(getActivities())
   }, [dispatch,id])
 
   
@@ -54,45 +51,6 @@ import style from './Detail.module.css'
           <p><strong>Population: </strong>{country.population}</p>
       </div>
       
-      {/* <div className={style.activitiesCointainer}>
-        <h2>Activities ↓</h2>
-
-        <div className={style.listActivities}>
-          {activities.length === 0 ? (
-            <p>There are no activities for this country</p>
-          ) : (
-            activities.map((activity) => {
-              return (
-                <div className={style.activityBox}>
-                  <p>
-                    <strong>id: </strong>
-                    {activity.countryId}
-                  </p>
-                  <p>
-                    <strong>Name: </strong>
-                    {activity.name}
-                  </p>
-                  <p>
-                    <strong>Difficulty: </strong>
-                    {activity.difficulty}
-                  </p>
-                  <p>
-                    <strong>Duration: </strong>
-                    {activity.duration}
-                  </p>
-                  <p>
-                    <strong>Season: </strong>
-                    {activity.season}
-                  </p>
-                </div>
-              );
-            })
-          )}
-        </div>
-      </div> */}
-
-      
-
       <Link className={style.linkDetail} to="/home">
         <button className={style.buttonDetail}>Return to Home</button>
       </Link>
