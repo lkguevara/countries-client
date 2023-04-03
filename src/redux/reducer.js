@@ -1,11 +1,12 @@
 // types
-import { GET_COUNTRIES, IS_LOADING, FILTER_CONTINENT, ORDER_ACTIVITY, ORDER_COUNTRY, ORDER_POPULATION } from './actions'
+import { GET_COUNTRIES, GET_ACTIVITIES, IS_LOADING, FILTER_CONTINENT, FILTER_ACTIVITY, ORDER_COUNTRY, ORDER_POPULATION } from './actions'
 
 // Estado inicial
 const initialState = {
     countries: [],
     allCountries: [],
     loading: false,
+    activities: []
 }
 
 // Reducer
@@ -26,6 +27,15 @@ const rootReducer = (state = initialState, action) => {
                 //Mande toda la action de getCountries
                 countries: action.payload,
                 allCountries: action.payload,
+                loading:false
+            }
+        
+        //* Get all activities
+        case GET_ACTIVITIES:
+            return {
+                ...state,
+                //Mande toda la action de getCountries
+                activities: action.payload,
                 loading:false
             }
         
@@ -74,6 +84,30 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: orderPopulation
             }
+
+        // * Filter activity
+       // * Filter activity
+        case FILTER_ACTIVITY:
+            // obtener todos los países del estado
+            const allCountriesActivities = state.allCountries;
+            // obtener el nombre de la actividad que se está filtrando
+            const activityName = action.payload;
+
+            if (activityName === 'all') {
+                return {
+                    ...state,
+                    countries: allCountriesActivities
+                };
+            }
+            // realizar el filtro según el nombre de la actividad
+            const filteredCountries = allCountriesActivities.filter(country =>
+                country.activities.some(activity => activity.name === activityName)
+            );
+            return {
+                ...state,
+                countries: filteredCountries
+            };
+    
 
         // *Default
         default:

@@ -8,7 +8,7 @@ import Search from '../../components/Search/Search'
 import Filters from '../../components/Filters/Filters'
 import Card from '../../components/Card/Card'
 // actions
-import {getCountries} from '../../redux/actions'
+import {getCountries, getActivities} from '../../redux/actions'
 // imagenes
 import loadingCountry from '../../assets/loading.gif';
 import Paginate from '../../components/Paginate/Paginate'
@@ -18,6 +18,7 @@ const Home = () => {
   const dispatch = useDispatch();
   //* useSelector => get/countries
   const allCountries = useSelector((state) => state.countries);
+  const allActivities = useSelector((state) => state.activities);
   const loading = useSelector((state) => state.loading);
 
   //* useState paginado
@@ -34,6 +35,7 @@ const Home = () => {
   // useEffect
   useEffect(() => {
     dispatch (getCountries())
+    dispatch (getActivities())
   }, []);
 
   return (
@@ -68,6 +70,7 @@ const Home = () => {
             name = {country.name}
             continent = {country.continent}
             population = { country.population}
+            activities = {country.activities.map(activity => activity.name)}
           />
           )
           

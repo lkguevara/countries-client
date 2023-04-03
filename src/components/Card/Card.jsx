@@ -1,7 +1,7 @@
 import style from './Card.module.css'
 import { Link } from 'react-router-dom'
 
-const CardCountry = ({name, image, continent, id, population}) => {
+const CardCountry = ({name, image, continent, id, population, activities}) => {
   return (
     <>
         <div className= {style.card}>
@@ -10,6 +10,12 @@ const CardCountry = ({name, image, continent, id, population}) => {
                 <h2 className={style.card__title}> {name}</h2>
                 <h2 className={style.card__continent}>{continent}</h2>
                 <p className={style.card__population}><strong>Población:</strong> {population.toLocaleString()}</p>
+                {
+                    activities.length > 0
+                    ? <p className={style.card__population}><strong>Actividades:</strong> {activities.join(', ')}</p>
+                    : <p className={style.card__population}><strong></strong> </p>
+
+                }
             </Link>
         </div>
       

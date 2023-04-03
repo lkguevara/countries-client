@@ -1,12 +1,24 @@
 import style from './Filters.module.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
 // import de las acciones del filtro u ordenamiento
-import { filterContinent, orderCountry, orderPopulation } from '../../redux/actions'
+import { filterContinent, orderCountry, orderPopulation, filterActivity } from '../../redux/actions'
+import { getActivities, getCountries } from '../../redux/actions'
 
 
 
 const Filters = ({setCurrentPage, setOrder}) => {
   const dispatch = useDispatch();
+  //* useSelector => get/countries
+  const allCountries = useSelector((state) => state.countries);
+  const activities = useSelector((state) => state.activities);
+
+  // useEffect
+  useEffect(() => {
+    dispatch (getCountries())
+    dispatch (getActivities())
+  }, []);
+
 
 
 //* handle filter continent
@@ -32,6 +44,13 @@ const Filters = ({setCurrentPage, setOrder}) => {
     setCurrentPage(1) 
     setOrder(`order = ${e.target.value}`)
   }
+
+// *handle filter activity
+  const handleFilterActivity = (e) => {
+    dispatch(filterActivity(e.target.value))
+    console.log(e.target.value)
+  }
+
 
 
 
@@ -63,10 +82,13 @@ const Filters = ({setCurrentPage, setOrder}) => {
           <option value="desc">Population ⬇️</option>
         </select>
 
-        <select name='orderActivity'>
+        <select name='filterActivity' onChange= {handleFilterActivity}>
           <option value="default" disabled = "disabled" >Sort Activity</option>
-          <option value="asc">▶️3 horas</option>
-          <option value="desc">◀️3 horas</option>
+          <option value="all">All countries</option>
+          {activities.map(activity => (
+          <option key={activity.id} value={activity.name}>{activity.name}</option>
+        ))}
+          
         </select>
 
 
