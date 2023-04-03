@@ -35,9 +35,7 @@
   width: 50%;
 }
   
-.continent img:hover{
-  transform: scale(1.7);
-}
+
 
 .extraInfoBox p{
   display: grid;
@@ -80,4 +78,23 @@
 .activitiesCointainer{
   color: #565f81;
   text-align: center;
+}
+
+@media (min-width: 768px) { 
+  .containerDetails {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+
+  .titleFlag{
+    width: 50%;
+  }
+
+  .extraInfoBox p{
+    grid-template-columns: repeat(2, 1fr);
+    width: 30%;
+  }
+
+  
 }
