@@ -3,6 +3,7 @@ import axios from 'axios';
 // types
 export const IS_LOADING = 'IS_LOADING'
 export const GET_COUNTRIES = 'GET_COUNTRIES';
+export const GET_COUNTRY = 'GET_COUNTRY';
 export const GET_ACTIVITIES = 'GET_ACTIVITIES';
 export const GET_NAME_COUNTRIES = 'GET_NAME_COUNTRIES';
 export const FILTER_CONTINENT = 'FILTER_CONTINENT'
@@ -59,6 +60,26 @@ export const getNameCountries = (name) => async (dispatch) => {
     catch (error) {
         throw error
     }
+}
+
+// * Obtener un pais por id
+export const getCountry = (id) => async (dispatch) => {
+    dispatch({
+        type: IS_LOADING
+    })
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/countries/${id}`
+      )
+        dispatch({
+            type: GET_COUNTRY,
+            payload: response.data
+        });
+    }
+    catch (error) {
+        throw error
+    }
+
 }
 
 

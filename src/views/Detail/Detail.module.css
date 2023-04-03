@@ -1,0 +1,83 @@
+.containerDetails{
+  margin: 50px;
+  text-align: center;
+}
+
+.containerDetails h1{
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #565f81;
+}
+  
+.titleFlag{
+  background-color: #eff5f8;
+  border-radius: 10px;
+  box-shadow: rgba(95, 93, 93, 0.2) 0px 2px 8px 0px; 
+  width: 70%;
+  margin: 0 auto;
+  padding: 10px;
+}
+  
+.titleFlag img{
+  width: 80%;
+  padding: 10px;
+}
+  
+.detail__continent{
+  font-size: 18px;
+  color: #565f81;
+  text-align: center;
+  font-weight: normal;
+}
+  
+.continent img{
+  width: 50%;
+}
+  
+.continent img:hover{
+  transform: scale(1.7);
+}
+
+.extraInfoBox p{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+  color: #565f81;
+  background-color: #eff5f8;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+  
+.linkDetail{
+  text-decoration: none;
+}
+
+.buttonDetail{
+  font-family: 'popins', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  background-color: #1e80b1;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  display: block;
+  margin: 40px 5px;
+}
+
+.buttonDetail:hover{
+  transform: scale(1.1);
+  border: none;
+  font-weight: 600;
+  background-color: #368fbb;
+}
+
+/* activities */
+.activitiesCointainer{
+  color: #565f81;
+  text-align: center;
+}

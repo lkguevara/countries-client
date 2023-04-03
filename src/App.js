@@ -4,7 +4,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 // imports componentes
 import Landing from './views/Landing/Landing';
 import Home from './views/Home/Home';
-import Detail from './views/Landing/Landing';
+import Detail from './views/Detail/Detail.jsx';
 import Create from './views/Create/Create';
 import Nav from './components/Nav/Nav';
 
