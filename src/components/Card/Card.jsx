@@ -16,6 +16,8 @@ const CardCountry = ({name, image, continent, id, population, activities}) => {
                     : <p className={style.card__population}><strong></strong> </p>
 
                 }
+
+
             </Link>
         </div>
       

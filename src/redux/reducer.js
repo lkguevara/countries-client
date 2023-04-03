@@ -1,5 +1,5 @@
 // types
-import { GET_COUNTRIES, GET_ACTIVITIES, IS_LOADING, FILTER_CONTINENT, FILTER_ACTIVITY, ORDER_COUNTRY, ORDER_POPULATION } from './actions'
+import { GET_COUNTRIES, GET_ACTIVITIES, GET_NAME_COUNTRIES, IS_LOADING, FILTER_CONTINENT, FILTER_ACTIVITY, ORDER_COUNTRY, ORDER_POPULATION } from './actions'
 
 // Estado inicial
 const initialState = {
@@ -38,6 +38,24 @@ const rootReducer = (state = initialState, action) => {
                 activities: action.payload,
                 loading:false
             }
+
+        // * Get name countries
+        case GET_NAME_COUNTRIES:
+            // si no hay paises con ese nombre, muestro un alert y devuelvo el estado con todos los paises
+            if (!action.payload.length) {
+                alert('No se encontraron países con ese nombre');
+                return {
+                ...state,
+                countries: state.allCountries,
+                loading: false
+                }
+            }
+            return {
+                ...state,
+                countries: action.payload,
+                loading: false
+            }
+
         
         // * Filter continent
         case FILTER_CONTINENT:

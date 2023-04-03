@@ -70,7 +70,7 @@ const Home = () => {
             name = {country.name}
             continent = {country.continent}
             population = { country.population}
-            activities = {country.activities.map(activity => activity.name)}
+            activities = {country.activities ? country.activities.map(activity => activity.name) : []}
           />
           )
           
