@@ -19,6 +19,7 @@ const Home = () => {
   //* useSelector => get/countries
   const allCountries = useSelector((state) => state.countries);
   const allActivities = useSelector((state) => state.activities);
+  // console.log(allActivities)
   const loading = useSelector((state) => state.loading);
 
   // Verificar que allCountries sea un array antes de llamar a slice, De esta forma, si allCountries no es un array, simplemente se creará un array vacío para evitar el error.

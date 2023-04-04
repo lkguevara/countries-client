@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from "axios"
 import {  useSelector } from 'react-redux';
 import style from './Create.module.css'
+import {SelectionMultiple} from '../../components/SelectionMultiple/SelectionMultiple'
 
 const Create = () => {
   // me trae el estado de countries del store
@@ -31,13 +32,21 @@ const Create = () => {
     formCompleted:""
   })
 
+    const  onDeletee = (country) => {
+    setForm({...form, countryid: form.countryid.filter(c=> c !== country) } )
+  }
+
+  const selectHandler = (event) => {
+    if (form.countryid.includes(event.target.value)) return;
+    setForm({...form, countryid: [...form.countryid, event.target.value ]} )
+  }
+
 
   
   return (
     <div className={style.container}>
 
       <div className={style.formContainer}>
-      <h1>Create an Activity</h1>
         <form className={style.form}>
         {/* name */}
           <div className={style.inputName}>
@@ -51,7 +60,7 @@ const Create = () => {
           {/* country */}
           <div className={style.inputCountry}>
               <label htmlFor='countryid'>Countries: </label>
-              <select name="countriesForm">
+              <select name="countriesForm"  onChange={selectHandler} >
                 <option value="countries" disabled = "disabled" >Countries:</option>
                     { 
                       countriesNames.map(country => (
@@ -60,6 +69,18 @@ const Create = () => {
                     
                   }
               </select>
+          </div>
+
+          <div className={style.selectedContainer}>
+          {
+            form.countryid.map(country=>{
+              return <SelectionMultiple
+                  key = {country}
+                  country ={country}
+                  onDeletee = {onDeletee}
+                />
+            })
+          }
           </div>
           {/* duration */}
           <div className={style.inputDuration}>
