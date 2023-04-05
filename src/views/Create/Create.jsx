@@ -1,15 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from "axios"
-import {  useSelector } from 'react-redux';
+import {  useSelector,useDispatch } from 'react-redux';
 import style from './Create.module.css'
 import {SelectionMultiple} from '../../components/SelectionMultiple/SelectionMultiple'
 
-// funcion validate
+//* funtion validate
 const validate = (state, errorsState) => {
-
   const errors = {...errorsState}
-  
     //! name
     if(!state.name) errors.name = 'The name is required'
     else errors.name = '';
@@ -27,16 +25,26 @@ const validate = (state, errorsState) => {
     if(!state.season) errors.season = 'The season is required'
     else errors.season = '';
 
-
-    
+    // ! Country
+    if(!state.countryId) errors.countryId = 'The country is required'
+    else errors.countryId = '';
 
     return errors;
 }
 
 const Create = () => {
-  // me trae el estado de countries del store
+  const dispatch = useDispatch()
   const countries =  useSelector(state=>state.countries)
-  // me trae el mapeo de los paises para el select
+    .sort((a, b) => {
+      if(a.name < b.name){
+          return -1;
+      }
+      if(a.name > b.name){
+          return 1;
+      }
+      return 0;
+    });
+
   let countriesNames = countries.map(country=> {return {label: country.name , value: country.id}});
   // formCompleted es para validar que el form este completo
   const [formCompleted, setFormCompleted] = useState(false)
@@ -47,7 +55,7 @@ const Create = () => {
     level:"",
     season:"",
     duration:"",
-    countryid: []
+    countryId: []
   })
 
 // manejo de errores
@@ -56,59 +64,71 @@ const Create = () => {
     level:"",
     season:"",
     duration:"",
-    countryid:"",
+    countryId:"",
     formCompleted:""
   })
 
     const  onDeletee = (country) => { 
-      setForm({...form, countryid: form.countryid.filter(c=> c !== country) } )
-      console.log(form.countryid)
+      setForm({...form, countryId: form.countryId.filter(c=> c !== country) } )
+      console.log(form.countryId)
     }
 // selección de multiples paises
   const selectHandler = (e) => {
-    if (form.countryid.includes(e.target.value)) return;
-    setForm({...form, countryid: [...form.countryid, e.target.value ]} )
+    if (form.countryId.includes(e.target.value)) return;
+    setForm({...form, countryId: [...form.countryId, e.target.value ]} )
+    
   }
 
   const handleChange = (e) => {
-    const property = e.target.name
-    const value = e.target.value
-
     setForm({
       ...form,
-      [property]: value
+      [e.target.name]: e.target.value
     })
 
     // validación del formulario
-
-    setErrors(validate({...form , [property]: value}, errors))
-    
+    setErrors(validate({
+      ...form , [e.target.name]: e.target.value
+    }, errors))
   }
+
+  // handle submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+
+  }
+
+
+  // variables 
+  const season = ['Summer', 'Winter', 'Fall', 'Spring']
 
   
   return (
     <div className={style.container}>
 
       <div className={style.formContainer}>
-        <form className={style.form} onSubmit ={''}>
+        <form className={style.form} onSubmit ={handleSubmit}>
+{/* -------------------------------------------------------------------- */}
         {/* name */}
           <div className={style.inputName}>
-              <label htmlFor='name' >Name: </label>
+              <label>Name: </label>
               <input 
+                className={style.input}
                 type="text" 
-                name="name" 
-                placeholder='Activity name...'  
                 value={form.name}
+                name="name" 
                 onChange={handleChange}
+                placeholder='Activity name...'  
               />
-              <span style={{color: 'red'}}>{errors.name}</span>
+              {errors.name && <p className={style.errorText}>{errors.name}</p>}
           </div>
+          
+{/* -------------------------------------------------------------------- */}
           {/* country */}
           <div className={style.inputCountry}>
-              <label htmlFor='countryid'>Countries: </label>
-              <select name="countriesForm"  onChange={selectHandler} >
+              <label >Country: </label>
+              <select name="countryId"  onChange={selectHandler} >
                 <option value="countries" disabled = "disabled" >Countries:</option>
-                <option value="all" >select country</option>
                     { 
                       countriesNames.map(country => (
                         <option key={country.value} value={country.value}>{country.label}</option>
@@ -116,12 +136,11 @@ const Create = () => {
                     
                   }
               </select>
-              
           </div>
 
           <div className={style.selectedContainer}>
           {
-            form.countryid.map(country=>{
+            form.countryId.map(country=>{
               return <SelectionMultiple
                   key = {country}
                   country ={country}
@@ -129,8 +148,12 @@ const Create = () => {
                 />
             })
           }
-          {!form.countryid.length && <p className={style.errorSelectText}>Select at least one country</p>}
+          
           </div>
+          {!form.countryId.length && <p className={style.errorSelectText}>Select at least one country</p>}
+
+
+{/* -------------------------------------------------------------------- */}
           {/* duration */}
           <div className={style.inputDuration}>
             <label>Duration: </label>
@@ -142,48 +165,44 @@ const Create = () => {
               placeholder='Duration in hours...'
             />
             
-            <span style={{color: 'red'}}>{errors.duration}</span>
+            {errors.duration && <p className={style.errorText}>{errors.duration}</p>}
           </div>
+
+{/* -------------------------------------------------------------------- */}
           {/* level */}
           <div className={style.inputLevel}>
-            <label htmlFor='level'>Level: </label>
+            <label>Level: </label>
 
-            <input type="radio" id='1' name='level' value='1' />
-            <label htmlFor='1'>1</label>
+            <select name="level" onChange={handleChange}>
+              <option value="level" disabled = "disabled" >Select Level:</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
 
-            <input type="radio" id='2' name='level' value='2'/>
-            <label htmlFor='2'>2</label>
-
-            <input type="radio" id='3' name='level' value='3'/>
-            <label htmlFor='3'>3</label>
-
-            <input type="radio" id='4' name='level' value='4'/>
-            <label htmlFor='4'>4</label>
-
-            <input type="radio" id='5' name='level' value='5'/>
-            <label htmlFor='5'>5</label>
-            <span style={{color: 'red'}}>{errors.level}</span>
+            {errors.level && <p className={style.errorText}>{errors.level}</p>}
           </div>
+
+{/* -------------------------------------------------------------------- */}
           {/* season */}
-         
-         
-            <label>Season: </label>
           <div className={style.seasonContainer}>
-            <input type="checkbox" id='summer' name='summer' value='summer'/>
-            <label htmlFor='summer'>Summer</label>
+            <label>Season: </label>
+            <select name="season" onChange={handleChange}>
+              <option value="season" disabled = "disabled" >Select season:</option>
+              {
+                season.map(s => (
+                  <option key={s} value={s}>{s}</option>
+                ))
+              }
+            </select>
 
-            <input type="checkbox" id='winter' name='winter' value='winter'/>
-            <label htmlFor='winter'>Winter</label>
-
-            <input type="checkbox" id='spring' name='spring' value='spring'/>
-            <label htmlFor='spring'>Spring</label>
-
-            <input type="checkbox" id='fall' name='fall' value='fall'/>
-            <label htmlFor='fall'>Fall</label>
-            <span style={{color: 'red'}}>{errors.season}</span>
+          {errors.season && <p className={style.errorText}>{errors.season}</p>}
           </div>
-     
-          {/* submit */}
+
+{/* -------------------------------------------------------------------- */}
+
           <button 
             className={style.submitButton} 
             type='submit' 
