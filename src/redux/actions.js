@@ -5,6 +5,7 @@ export const IS_LOADING = 'IS_LOADING'
 export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_COUNTRY = 'GET_COUNTRY';
 export const GET_ACTIVITIES = 'GET_ACTIVITIES';
+export const POST_ACTIVITIES = 'POST_ACTIVITIES';
 export const GET_NAME_COUNTRIES = 'GET_NAME_COUNTRIES';
 export const FILTER_CONTINENT = 'FILTER_CONTINENT'
 export const FILTER_ACTIVITY = 'FILTER_ACTIVITY' 
@@ -81,6 +82,22 @@ export const getCountry = (id) => async (dispatch) => {
     }
 
 }
+
+// * Crear actividad
+export const postActivity = (payload) => async (dispatch) => {
+    try {
+      const response = await axios.post('http://localhost:3001/activities', payload);
+      dispatch({
+        type: POST_ACTIVITIES,
+        payload: response.data,
+      });
+    } catch (error) {
+        console.log(error.response.data);
+        return error.message;
+    }
+};
+  
+
 
 
 // * FILTROS Y ORDENAMIENTO

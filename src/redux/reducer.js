@@ -1,5 +1,5 @@
 // types
-import { GET_COUNTRIES, GET_ACTIVITIES, GET_NAME_COUNTRIES, IS_LOADING, FILTER_CONTINENT, FILTER_ACTIVITY, ORDER_COUNTRY, ORDER_POPULATION, GET_COUNTRY } from './actions'
+import { GET_COUNTRIES, GET_ACTIVITIES, GET_NAME_COUNTRIES, IS_LOADING, FILTER_CONTINENT, FILTER_ACTIVITY, ORDER_COUNTRY, ORDER_POPULATION, GET_COUNTRY, POST_ACTIVITIES } from './actions'
 
 // Estado inicial
 const initialState = {
@@ -39,6 +39,7 @@ const rootReducer = (state = initialState, action) => {
                 activities: action.payload,
                 loading:false
             }
+
 
         // * Get name countries
         case GET_NAME_COUNTRIES:

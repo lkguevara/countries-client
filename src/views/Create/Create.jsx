@@ -4,6 +4,7 @@ import axios from "axios"
 import {  useSelector,useDispatch } from 'react-redux';
 import style from './Create.module.css'
 import {SelectionMultiple} from '../../components/SelectionMultiple/SelectionMultiple'
+import {postActivity} from '../../redux/actions'
 
 //* funtion validate
 const validate = (state, errorsState) => {
@@ -94,13 +95,21 @@ const Create = () => {
   // handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
-
-
+    dispatch(postActivity(form))
+    alert('Activity created successfully')
+    setForm({
+      name:"",
+      level:"",
+      season:"",
+      duration:"",
+      countryId: []
+    })
+    
   }
 
 
   // variables 
-  const season = ['Summer', 'Winter', 'Fall', 'Spring']
+  const season = ['spring', 'summer', 'fall' ,'winter ']
 
   
   return (
