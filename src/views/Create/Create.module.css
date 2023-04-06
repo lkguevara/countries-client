@@ -84,7 +84,6 @@
 }
 
 /* button submit */
-
 .submitButton{
     margin: 0 auto;
     margin-top: 20px;
@@ -98,6 +97,18 @@
     font-size: 15px;
     cursor: pointer;
     display: block;
+}
+
+.confirmButton{
+    color: red;
+    font-weight: bold;
+    background-color: rgb(236, 223, 223);
+    padding: 5px;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* validate */

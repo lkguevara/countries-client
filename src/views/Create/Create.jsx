@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import {  useSelector, useDispatch } from 'react-redux';
 import {postActivity , getCountries} from '../../redux/actions'
 import style from './Create.module.css'
@@ -25,14 +25,22 @@ const validate = (state, errorsState) => {
     else errors.season = '';
 
     // ! Country
-    if(!state.countryId) errors.countryId = 'The country is required'
-    else errors.countryId = '';
+    //  Array.isArray para verificar si el campo countryId es un arreglo y si su longitud es mayor a cero
+    if (!Array.isArray(state.countryId) || state.countryId.length === 0) {
+      errors.countryId = 'Please select at least one country';
+    } else {
+      errors.countryId = '';
+    }
+
 
     return errors;
 }
 
 const Create = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // countries de mi store
   const countries =  useSelector(state=>state.countries)
     .sort((a, b) => {
       if(a.name < b.name){
@@ -44,13 +52,8 @@ const Create = () => {
       return 0;
     });
   
- 
 
-  // let countriesNames = countries.map(country=> {return {label: country.name , value: country.id}});
-  // formCompleted es para validar que el form este completo
-  const [formCompleted, setFormCompleted] = useState(false)
-
-// corresponde al estado local de las props del form
+// Información que va a tener el formulario
   const [form, setForm] = useState({
     name:"",
     level:"",
@@ -58,6 +61,9 @@ const Create = () => {
     duration:"",
     countryId: []
   })
+
+  // validación del formulario
+  const [formCompleted, setFormCompleted] = useState(false)
 
   // dispatch de las actividades
   useEffect(() => {
@@ -82,6 +88,7 @@ const Create = () => {
       ...form,
       [e.target.name]: e.target.value
     })
+    // console.log(form)
 
     // validación del formulario
     setErrors(validate({
@@ -114,16 +121,31 @@ const Create = () => {
   // handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    // console.log(form)
+    
+    // despacho el post de la actividad
     dispatch(postActivity(form))
-    alert('Activity created successfully')
+    alert('Activity created successfully');
+
+    // reseteo del form
     setForm({
       name:"",
       level:"",
       season:"",
       duration:"",
       countryId: []
-    })
-    
+    });
+
+    setFormCompleted(false)
+
+    // redirecciono a home
+    navigate('/home')
+  }
+
+  const validateForm = () => {
+    (form.name && form.countryId.length >=1 && form.duration && form.season) 
+    ? setFormCompleted(true) 
+    : setErrors({...errors, formCompleted: 'FORM INCOMPLETE, PLEASE COMPLETE IT'})
   }
 
 
@@ -178,7 +200,7 @@ const Create = () => {
               )))}
             </div>
             
-            {!form.countryId.length && <p className={style.errorSelectText}>Select at least one country</p>}
+            {errors.countryId && <p className={style.errorText}>{errors.countryId}</p>}
         </div>
 
 
@@ -218,7 +240,7 @@ const Create = () => {
           {/* season */}
           <div className={style.seasonContainer}>
             <label>Season: </label>
-            <select name="season" onChange={handleChange}>
+            <select name="season" onChange={handleChange} required>
               <option value="season" disabled = "disabled" >Select season:</option>
               {
                 season.map(s => (
@@ -232,12 +254,10 @@ const Create = () => {
 
 {/* -------------------------------------------------------------------- */}
 
-          <button 
-            className={style.submitButton} 
-            type='submit' 
-          >
-            Submit Activity
-          </button>
+          <p className={style.confirmButton} onClick={validateForm}>Information form !!</p>
+          {errors.formCompleted && <p className={style.errorText}>{errors.formCompleted}</p>}
+
+          <button type='submit' className={style.submitButton} disabled={!formCompleted}>Submit Activity</button>
             
         </form>
          
