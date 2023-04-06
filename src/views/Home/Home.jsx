@@ -18,12 +18,12 @@ const Home = () => {
   const dispatch = useDispatch();
   //* useSelector => get/countries
   const allCountries = useSelector((state) => state.countries);
-  const allActivities = useSelector((state) => state.activities);
+  // const allActivities = useSelector((state) => state.activities);
   // console.log(allActivities)
   const loading = useSelector((state) => state.loading);
 
   // Verificar que allCountries sea un array antes de llamar a slice, De esta forma, si allCountries no es un array, simplemente se creará un array vacío para evitar el error.
-  const countriesToShow = Array.isArray(allCountries) ? allCountries.slice(0, 8) : [];
+  const countriesToShow = Array.isArray(allCountries) ? allCountries.slice(0, 250) : [];
 
   //* useState paginado
   const [currentPage, setCurrentPage] = useState(1); // Página actual que arranca en 1
@@ -39,7 +39,6 @@ const Home = () => {
   // useEffect
   useEffect(() => {
     dispatch (getCountries())
-    dispatch (getActivities())
   }, []);
 
   return (
