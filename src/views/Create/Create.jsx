@@ -1,10 +1,8 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import axios from "axios"
-import {  useSelector,useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import {  useSelector, useDispatch } from 'react-redux';
+import {postActivity , getCountries} from '../../redux/actions'
 import style from './Create.module.css'
-import {SelectionMultiple} from '../../components/SelectionMultiple/SelectionMultiple'
-import {postActivity} from '../../redux/actions'
 
 //* funtion validate
 const validate = (state, errorsState) => {
@@ -45,8 +43,10 @@ const Create = () => {
       }
       return 0;
     });
+  
+ 
 
-  let countriesNames = countries.map(country=> {return {label: country.name , value: country.id}});
+  // let countriesNames = countries.map(country=> {return {label: country.name , value: country.id}});
   // formCompleted es para validar que el form este completo
   const [formCompleted, setFormCompleted] = useState(false)
 
@@ -59,6 +59,12 @@ const Create = () => {
     countryId: []
   })
 
+  // dispatch de las actividades
+  useEffect(() => {
+    dispatch(getCountries())
+  }, [])
+  
+
 // manejo de errores
   const [errors, setErrors] = useState({
     name:"",
@@ -69,17 +75,8 @@ const Create = () => {
     formCompleted:""
   })
 
-    const  onDeletee = (country) => { 
-      setForm({...form, countryId: form.countryId.filter(c=> c !== country) } )
-      console.log(form.countryId)
-    }
-// selección de multiples paises
-  const selectHandler = (e) => {
-    if (form.countryId.includes(e.target.value)) return;
-    setForm({...form, countryId: [...form.countryId, e.target.value ]} )
-    
-  }
 
+// manejador de cambios de los inputs
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -91,6 +88,28 @@ const Create = () => {
       ...form , [e.target.name]: e.target.value
     }, errors))
   }
+
+  // manejador de cambios de los select
+  const handleSelect = (e) => {
+    setForm({
+      ...form,
+      countryId: [...form.countryId, e.target.value]
+    })
+    setErrors(validate({
+      ...form , countryId: [...form.countryId, e.target.value]
+    }, errors))
+  }
+
+  // eliminar un pais del select
+  const  handleDelete = (country) => { 
+    setForm(
+      {
+        ...form, 
+        countryId: form.countryId.filter(c=> c !== country) 
+      } 
+    )
+  }
+
 
   // handle submit
   const handleSubmit = (e) => {
@@ -124,42 +143,43 @@ const Create = () => {
               <input 
                 className={style.input}
                 type="text" 
+                placeholder='Activity name...'  
                 value={form.name}
                 name="name" 
                 onChange={handleChange}
-                placeholder='Activity name...'  
               />
               {errors.name && <p className={style.errorText}>{errors.name}</p>}
           </div>
           
 {/* -------------------------------------------------------------------- */}
           {/* country */}
-          <div className={style.inputCountry}>
-              <label >Country: </label>
-              <select name="countryId"  onChange={selectHandler} >
-                <option value="countries" disabled = "disabled" >Countries:</option>
-                    { 
-                      countriesNames.map(country => (
-                        <option key={country.value} value={country.value}>{country.label}</option>
-                    ))
-                    
-                  }
-              </select>
-          </div>
+        <div className={style.inputCountry}>
 
-          <div className={style.selectedContainer}>
-          {
-            form.countryId.map(country=>{
-              return <SelectionMultiple
-                  key = {country}
-                  country ={country}
-                  onDeletee = {onDeletee}
-                />
-            })
-          }
-          
-          </div>
-          {!form.countryId.length && <p className={style.errorSelectText}>Select at least one country</p>}
+            <label>Country: </label>
+            {/* muestra todos los paises a seleccionar */}
+            <select name="countryId" onChange={handleSelect}>
+              <option disabled="disabled" selected defaultValue>
+                Select one or more countries:
+              </option>
+              {countries.map((country) => (
+                <option key={country.id} value={country.id} name="country">
+                  {country.name}
+                </option>
+              ))}
+            </select>
+
+            {/*Muestra los paises seleccionados  */}
+            <div className={style.selectedContainer}>
+              {form.countryId.map((country => (
+                <div className={style.selectCountry}>
+                  <span>{country}</span>
+                  <button type="button" onClick={() => handleDelete(country)}>X</button>
+                </div>
+              )))}
+            </div>
+            
+            {!form.countryId.length && <p className={style.errorSelectText}>Select at least one country</p>}
+        </div>
 
 
 {/* -------------------------------------------------------------------- */}
@@ -169,9 +189,9 @@ const Create = () => {
             <input 
               type="number" 
               name="duration"
+              placeholder='Duration in hours...'
               value={form.duration}
               onChange={handleChange}
-              placeholder='Duration in hours...'
             />
             
             {errors.duration && <p className={style.errorText}>{errors.duration}</p>}

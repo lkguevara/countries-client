@@ -39,6 +39,12 @@ const rootReducer = (state = initialState, action) => {
                 activities: action.payload,
                 loading:false
             }
+        
+        //* Post activities
+        case POST_ACTIVITIES:
+            return {
+                ...state,
+            }
 
 
         // * Get name countries

@@ -47,7 +47,13 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     margin-top: 10px;
+    text-decoration: none;
 
+}
+
+.selectCountry{
+    text-decoration: none;
+    
 }
 
 /* duration */

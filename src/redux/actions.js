@@ -31,9 +31,6 @@ export const getCountries = () => async (dispatch) => {
 
 // * Obtener todas las actividades
 export const getActivities = () => async (dispatch) => {
-    dispatch({
-        type: IS_LOADING
-    })
     try {
         const response = await axios.get('http://localhost:3001/activities')
         dispatch({
@@ -45,6 +42,23 @@ export const getActivities = () => async (dispatch) => {
         throw error
     }
 }
+
+// * Crear actividad
+export const postActivity = (payload) => async (dispatch) => {
+    try {
+      const response = await axios.post('http://localhost:3001/activities', payload); // en esta ruta se hace el post del payload
+    //   dispatch({
+    //     type: POST_ACTIVITIES,
+    //     payload: response.data,
+    //   });
+        console.log(response)
+        return response
+
+    } catch (error) {
+        console.log(error.response.data);
+        return error.message;
+    }
+};
 
 // * Obtener un pais por nombre
 export const getNameCountries = (name) => async (dispatch) => {
@@ -83,19 +97,7 @@ export const getCountry = (id) => async (dispatch) => {
 
 }
 
-// * Crear actividad
-export const postActivity = (payload) => async (dispatch) => {
-    try {
-      const response = await axios.post('http://localhost:3001/activities', payload);
-      dispatch({
-        type: POST_ACTIVITIES,
-        payload: response.data,
-      });
-    } catch (error) {
-        console.log(error.response.data);
-        return error.message;
-    }
-};
+
   
 
 
