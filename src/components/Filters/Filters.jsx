@@ -84,7 +84,7 @@ const Filters = ({setCurrentPage, setOrder}) => {
 
         <select name='filterActivity' onChange= {handleFilterActivity}>
           <option value="default" disabled = "disabled" >Sort Activity</option>
-          <option value="all">All countries</option>
+          <option value="all">All activities</option>
           {activities.map(activity => (
           <option key={activity.id} value={activity.name}>{activity.name}</option>
         ))}

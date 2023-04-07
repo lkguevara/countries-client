@@ -129,13 +129,12 @@ const rootReducer = (state = initialState, action) => {
             if (activityName === 'all') {
                 return {
                     ...state,
-                    countries: allCountriesActivities
+                    countries: allCountriesActivities.filter(country => country.activities.length > 0)
                 };
             }
             // realizar el filtro según el nombre de la actividad
             const filteredCountries = allCountriesActivities.filter(country =>
-                country.activities.some(activity => activity.name === activityName)
-            );
+                country.activities.some(activity => activity.name === activityName));
             return {
                 ...state,
                 countries: filteredCountries

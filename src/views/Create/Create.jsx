@@ -145,7 +145,7 @@ const Create = () => {
   const validateForm = () => {
     (form.name && form.countryId.length >=1 && form.duration && form.season) 
     ? setFormCompleted(true) 
-    : setErrors({...errors, formCompleted: 'FORM INCOMPLETE, PLEASE COMPLETE IT'})
+    : setFormCompleted(false)
   }
 
 
@@ -254,7 +254,7 @@ const Create = () => {
 
 {/* -------------------------------------------------------------------- */}
 
-          <p className={style.confirmButton} onClick={validateForm}>Information form !!</p>
+          <p className={style.confirmButton} onClick={validateForm}>Compelete all camps !</p>
           {errors.formCompleted && <p className={style.errorText}>{errors.formCompleted}</p>}
 
           <button type='submit' className={style.submitButton} disabled={!formCompleted}>Submit Activity</button>
