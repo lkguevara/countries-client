@@ -1,7 +1,7 @@
 /* form */
 .form{
-    background-color: #eff5f8;
-    border: 1px solid #3B5BA7;
+    background-color: #0055556c;
+    border: 1px solid #ffffff;
     border-radius: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     padding: 25px;
@@ -11,6 +11,7 @@
 
 .form label {
     font-weight: bold;
+    color: black;
 }
   
 
@@ -52,8 +53,26 @@
 }
 
 .selectCountry{
+    display: flex;
+    justify-content: space-around;
     text-decoration: none;
+    background-color: #3E9F9C;
+    color: white;
+    width: 90%;
+    text-align: center;
+    padding: 5px;
+    border-radius: 8px;
     
+}
+
+.selectCountry button{
+    border: none;
+    background-color: #a7fdfa;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 17px;
+    font-size: 10px;
 }
 
 /* duration */
@@ -91,7 +110,7 @@
     height: 40px;
     border: none;
     border-radius: 5px;
-    background-color: #3B5BA7;
+    background-color:  #005555;
     color: white;
     font-weight: bold;
     font-size: 15px;
@@ -152,10 +171,26 @@
         width: 97%;
     }
 
+    .selectCountry{
+        width: 70%;
+    }
+
+    .selectedContainer{
+        grid-template-columns: repeat(4, 1fr);
+    }
+
 }
 @media screen and (min-width: 1024px) {
     .form{
         width: 40%;
+    }
+
+    .selectCountry{
+        width: 60%;
+    }
+
+    .selectedContainer{
+        grid-template-columns: repeat(5, 1fr);
     }
 
     

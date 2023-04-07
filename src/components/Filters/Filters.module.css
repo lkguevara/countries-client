@@ -2,13 +2,14 @@
     font-family: 'popins', sans-serif;
     font-size: 15px;
     border: none;
-    background-color: #d4eaf5a1;
+    background-color: #a9dfd6;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 6px;
+    border-radius: 5px;
     margin: 5px;
     padding: 5px;
     cursor: pointer;
-    color: #565f81;
+    color: #005555;
+    border: 1px solid grey;
     margin: 0 auto;
     margin-bottom: 15px;
     align-items: center;

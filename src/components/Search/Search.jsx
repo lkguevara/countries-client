@@ -42,20 +42,20 @@ const Search = () => {
           onKeyDown={handleKeyDown}
           value={name}
         />
-        <button
+        {/* <button
           className={style.searchButton}
           type="submit"
           onClick={handleSubmit}
         >
           Buscar
-        </button>
-      </div>
+        </button> */}
 
-      {/* obtener todos los paises */}
-      <div className={style.getCountries}>
+         {/* obtener todos los paises */}
+        <div className={style.getCountries}>
         <button className={style.countriesButton} onClick={handleCountries}>
           Get all countries
         </button>
+      </div>
       </div>
     </div>
   );
