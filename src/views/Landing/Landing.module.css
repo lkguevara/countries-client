@@ -4,20 +4,23 @@
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    background-image: url('../../assets/landing.jpg');
+    background-image: url('../../assets/landing-2.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh; 
-    
+    opacity: 0.9; /* ajusta este valor para hacer la imagen más o menos transparente */
 } 
 
 .title{
     font-size: 50px;
-    font-weight: normal;
-    color: #ffffff;
+    font-weight: bold;
+    color: rgb(255, 243, 243);
     text-align: center;
     margin-bottom: 15px;
     font-family: 'popins', sans-serif;
+    background-color: rgba(0, 0, 0, 0.384);
+    padding: 10px;
+    border-radius: 8px;
     
 }
 
@@ -26,7 +29,7 @@
     display: flex;
     justify-content: right;
     padding: 17px;
-    background-color: rgba(0, 0, 0, 0.671);
+    background-color: rgba(0, 0, 0, 0.384);
     border-radius: 7px;
     border-color: transparent;
     font-size: 30px;

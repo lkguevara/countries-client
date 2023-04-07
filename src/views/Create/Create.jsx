@@ -5,10 +5,11 @@ import {postActivity , getCountries} from '../../redux/actions'
 import style from './Create.module.css'
 
 //* funtion validate
-const validate = (state, errorsState) => {
+const validate = (state, errorsState, activitiesList) => {
   const errors = {...errorsState}
     //! name
     if(!state.name) errors.name = 'The name is required'
+    else if(!/^[a-zA-Z\s]/i.test(state.name)) errors.name = 'The name is invalid'
     else errors.name = '';
 
     // ! Duration
@@ -79,7 +80,7 @@ const Create = () => {
     duration:"",
     countryId:"",
     formCompleted:""
-  })
+  });
 
 
 // manejador de cambios de los inputs
@@ -122,6 +123,7 @@ const Create = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(form)
+
     
     // despacho el post de la actividad
     dispatch(postActivity(form))
