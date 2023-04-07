@@ -5,11 +5,14 @@ import {postActivity , getCountries} from '../../redux/actions'
 import style from './Create.module.css'
 
 //* funtion validate
-const validate = (state, errorsState, activitiesList) => {
+const validate = (state, errorsState) => {
+  
   const errors = {...errorsState}
     //! name
     if(!state.name) errors.name = 'The name is required'
-    else if(!/^[a-zA-Z\s]/i.test(state.name)) errors.name = 'The name is invalid'
+    else if(!/^[a-zA-Z\s]/i.test(state.name)) errors.name = 'The name is invalid, only letters'
+    else if(state.name.length < 4) errors.name = 'The name is invalid, min 3 characters'
+    else if(state.name.length > 20) errors.name = 'The name is invalid, max 20 characters'
     else errors.name = '';
 
     // ! Duration
@@ -40,7 +43,7 @@ const validate = (state, errorsState, activitiesList) => {
 const Create = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const activitiesList = useSelector(state=>state.activities)
   // countries de mi store
   const countries =  useSelector(state=>state.countries)
     .sort((a, b) => {
@@ -99,6 +102,12 @@ const Create = () => {
 
   // manejador de cambios de los select
   const handleSelect = (e) => {
+    const selectedCountry = e.target.value;
+    if (form.countryId.includes(selectedCountry)) {
+      // El país seleccionado ya existe en la lista
+      return;
+    }
+    
     setForm({
       ...form,
       countryId: [...form.countryId, e.target.value]
@@ -121,9 +130,15 @@ const Create = () => {
 
   // handle submit
   const handleSubmit = (e) => {
+    
     e.preventDefault();
     // console.log(form)
 
+    if (activitiesList.find(activity => activity.name === form.name)) {
+      alert('The activity already exists');
+      return;
+    }
+    
     
     // despacho el post de la actividad
     dispatch(postActivity(form))
@@ -147,7 +162,7 @@ const Create = () => {
   const validateForm = () => {
     (form.name && form.countryId.length >=1 && form.duration && form.season) 
     ? setFormCompleted(true) 
-    : setFormCompleted(false)
+    : setFormCompleted(false) 
   }
 
 
@@ -227,7 +242,7 @@ const Create = () => {
             <label>Level: </label>
 
             <select name="level" onChange={handleChange}>
-              <option value="level" disabled = "disabled" >Select Level:</option>
+              <option value="level">Select Level:</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -243,7 +258,7 @@ const Create = () => {
           <div className={style.seasonContainer}>
             <label>Season: </label>
             <select name="season" onChange={handleChange} required>
-              <option value="season" disabled = "disabled" >Select season:</option>
+              <option value="season" >Select season:</option>
               {
                 season.map(s => (
                   <option key={s} value={s}>{s}</option>

@@ -10,10 +10,9 @@ import style from './Detail.module.css'
 
  const Detail = () => {
 	 
-	 const dispatch = useDispatch();
-	 
-	  const country = useSelector(state=>state.countries)
-	 const {id} = useParams()
+	const dispatch = useDispatch();
+	const country = useSelector(state=>state.countries)
+	const {id} = useParams()
 
 
   useEffect(() => {
