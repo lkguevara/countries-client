@@ -18,11 +18,9 @@ const Home = () => {
   const dispatch = useDispatch();
   //* useSelector => get/countries
   const allCountries = useSelector((state) => state.countries);
-  // const allActivities = useSelector((state) => state.activities);
-  // console.log(allActivities)
   const loading = useSelector((state) => state.loading);
 
-  // Verificar que allCountries sea un array antes de llamar a slice, De esta forma, si allCountries no es un array, simplemente se creará un array vacío para evitar el error.
+  // Verifica que allCountries sea un array antes de llamar a slice, De esta forma, si allCountries no es un array, simplemente se creará un array vacío para evitar el error.
   const countriesToShow = Array.isArray(allCountries) ? allCountries.slice(0, 250) : [];
 
   //* useState paginado
@@ -33,6 +31,7 @@ const Home = () => {
   const currentCountries = countriesToShow.slice(indexFirstCountry, indexLastCountry); // Const que guardará todos los personajes que vayan a haber por page. El slice lo que hace es cortar el array de paises y nos devuelve un array con los paises de la página actual
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber); // función para cambiar de página
+  const maxPage = Math.ceil(countriesToShow.length / countriesPage); // Cantidad de páginas que hay
 
   const [order, setOrder] = useState('');
 
@@ -88,6 +87,8 @@ const Home = () => {
           countriesPage={countriesPage}
           allCountries={allCountries.length}
           paginate={paginate}
+          maxPage={maxPage}
+          currentPage={currentPage}
       />
     </>
   )
