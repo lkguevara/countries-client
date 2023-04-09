@@ -12,11 +12,13 @@ import style from './Detail.module.css'
 	 
 	const dispatch = useDispatch();
 	const country = useSelector(state=>state.countries)
+  const activities = useSelector(state=>state.activities)
 	const {id} = useParams()
 
 
   useEffect(() => {
     dispatch(getCountry(id))
+    dispatch(getActivities())
   }, [dispatch,id])
 
   
@@ -48,6 +50,7 @@ import style from './Detail.module.css'
           <p><strong>Subregion: </strong>{country.subregion}</p>
           <p><strong>Area: </strong>{country.area} km2</p>
           <p><strong>Population: </strong>{country.population}</p>
+          <p><strong>Activities: </strong>{country.Activities ? country.Activities.map(activity => activity.name).join(', ') : []}</p>
       </div>
       
       <Link className={style.linkDetail} to="/home">
