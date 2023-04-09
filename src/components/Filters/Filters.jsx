@@ -85,9 +85,20 @@ const Filters = ({setCurrentPage, setOrder}) => {
         <select name='filterActivity' onChange= {handleFilterActivity}>
           <option value="default" disabled = "disabled" >Sort Activity</option>
           <option value="all">All activities</option>
-          {activities.map(activity => (
+          {/* {activities.map(activity => (
           <option key={activity.id} value={activity.name}>{activity.name}</option>
-        ))}
+        ))} */}
+
+        {/* ordenando asc */}
+        {
+          activities.sort((a, b) => a.name.localeCompare(b.name)).map(activity => (
+          <option 
+            key={activity.id} 
+            value={activity.name}>
+            {activity.name}
+          </option>
+          ))
+        }
           
         </select>
 
