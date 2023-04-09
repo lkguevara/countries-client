@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {  useSelector, useDispatch } from 'react-redux';
 import {postActivity , getCountries} from '../../redux/actions'
 import style from './Create.module.css'
@@ -172,8 +172,12 @@ const Create = () => {
   
   return (
     <div className={style.container}>
+      <Link className={style.linkDetail} to="/home">
+          <button className={style.buttonDetail}>Return to Home</button>
+      </Link>
 
       <div className={style.formContainer}>
+        <h1 className={style.title}>Create Activity</h1>
         <form className={style.form} onSubmit ={handleSubmit}>
 {/* -------------------------------------------------------------------- */}
         {/* name */}
@@ -280,25 +284,12 @@ const Create = () => {
          
 
         </div>
+        
     </div>
   )
 }
 
 export default Create
 
-const initialState = {
-  username: ''
-};
 
-const userReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'UPDATE_USERNAME':
-      return {
-        ...state,
-        username: action.payload
-      };
-    default:
-      return state;
-  }
-};
 

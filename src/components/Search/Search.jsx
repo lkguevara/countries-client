@@ -8,10 +8,6 @@ const Search = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
 
-  function handleCountries(e) {
-    e.preventDefault();
-    dispatch(getCountries());
-  }
 
   const handleSearch = (e) => {
     // capturar el valor del input
@@ -51,12 +47,8 @@ const Search = () => {
         </button> */}
 
          {/* obtener todos los paises */}
-        <div className={style.getCountries}>
-        <button className={style.countriesButton} onClick={handleCountries}>
-          Get all countries
-        </button>
       </div>
-      </div>
+
     </div>
   );
 };

@@ -40,4 +40,13 @@
     }
 }
 
+@media (min-width: 1024px) {
+
+    .filtersBar select{
+        width: 70%;
+    }
+
+    
+}
+
 

@@ -7,18 +7,19 @@ import Home from './views/Home/Home';
 import Detail from './views/Detail/Detail.jsx';
 import Create from './views/Create/Create';
 import Nav from './components/Nav/Nav';
+import NotFound from './views/NotFound/NotFound';
 
 function App() {
   const location = useLocation();
   return (
     <>
-      {location.pathname !== "/" && <Nav/>}
+      {/* {location.pathname !== "/" && <Nav/>} */}
       <Routes >
         <Route path='/' element={<Landing />} />
         <Route path='/home' element={<Home />} />
         <Route path='/detail/:id' element={<Detail />} />
         <Route path= '/create'  element={<Create />} />
-        <Route path='*' element={<h1>404: Not Found</h1>} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </>
     

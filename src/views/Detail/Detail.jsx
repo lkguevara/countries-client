@@ -26,6 +26,7 @@ import style from './Detail.module.css'
 
 	 return (
     <>
+     <h1 className={style.titleCountry}>Detail {country.name}</h1>
 		 <div className={style.containerDetails}>
      
       <div className={style.titleFlag}>
@@ -50,7 +51,8 @@ import style from './Detail.module.css'
           <p><strong>Subregion: </strong>{country.subregion}</p>
           <p><strong>Area: </strong>{country.area} km2</p>
           <p><strong>Population: </strong>{country.population}</p>
-          <p><strong>Activities: </strong>{country.Activities ? country.Activities.map(activity => activity.name).join(', ') : []}</p>
+          <p><strong>Activities: </strong>{country.Activities && country.Activities.length > 0 ? country.Activities.map(activity => activity.name).join(', ') : 'Country has no activities, create one!'}</p>
+
       </div>
       
       <Link className={style.linkDetail} to="/home">

@@ -12,6 +12,7 @@ import {getCountries, getActivities} from '../../redux/actions'
 // imagenes
 import loadingCountry from '../../assets/loading.gif';
 import Paginate from '../../components/Paginate/Paginate'
+import Nav from '../../components/Nav/Nav'
 
 
 const Home = () => {
@@ -42,6 +43,7 @@ const Home = () => {
 
   return (
     <>
+      <Nav />
       <div className={style.filters}>
         <Filters
           setCurrentPage={setCurrentPage}

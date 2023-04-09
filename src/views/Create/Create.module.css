@@ -13,7 +13,14 @@
     font-weight: bold;
     color: black;
 }
-  
+
+.title{
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px;
+    color: #005555;
+    text-align: center;
+}
 
 /* activity name */
 .inputName {
@@ -144,6 +151,34 @@
     text-align: left;
     color: rgb(205, 13, 13);
 }
+
+/* button detail */
+
+.linkDetail{
+    text-decoration: none;
+}
+
+.buttonDetail{
+    font-family: 'popins', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    background-color: #014646;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    display: block;
+    margin: 40px;
+  }
+  
+  .buttonDetail:hover{
+    transform: scale(1.1);
+    border: none;
+    font-weight: 600;
+    background-color: #008080da;
+  }
 
 
 /* media queries */

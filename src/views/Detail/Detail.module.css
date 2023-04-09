@@ -9,6 +9,14 @@
   margin: 0;
   color: #565f81;
 }
+
+.titleCountry{
+  font-size: 24px;
+  color: #005555;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 40px;
+}
   
 .titleFlag{
   background-color: #eff5f8;
@@ -34,8 +42,6 @@
 .continent img{
   width: 50%;
 }
-  
-
 
 .extraInfoBox p{
   display: grid;
@@ -94,6 +100,10 @@
   .extraInfoBox p{
     grid-template-columns: repeat(2, 1fr);
     width: 30%;
+  }
+
+  .titleCountry{
+    font-size: 36px;
   }
 
   

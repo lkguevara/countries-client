@@ -1,7 +1,9 @@
 .searchBar {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
     
 }
 
@@ -10,15 +12,14 @@
     background-color: #a9dfd66c;
     border-radius: 6px;
     padding: 8px;
-    /* width: 90%; */
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     outline: none;
     text-align: center;
-    margin: 0 auto;
-    display: block;
     color: #005555;
     border: 1px solid grey;
+
 }
+
 
 .searchBar input:focus{
     border: 1px solid #a9dfd6;
@@ -33,20 +34,7 @@
 }
 
 
-.searchButton, .countriesButton {
-    border:none;
-    border-radius: 5px;
-    padding: 8px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    align-items: center;
-    text-align: center;
-    margin-left: 10px;
-    cursor: pointer;
-    background-color: #d4eaf56b;
-    color: #005555;
-    background-color: #a9dfd694;
-    border: 1px solid grey;
-}
+.searchButton
 
 .searchButton{
     display: block;
@@ -54,40 +42,34 @@
 }
 
 
-.countriesButton{
-    background-color: #a9dfd6;
-    color: #005555;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    /* margin-top: 10px; */
-}
-
 
 /* mq */
-@media (min-width: 500px) { 
+/* @media (min-width: 500px) { 
     .searchBar {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 0;
         margin: 0 50px
         
     }
-}
+} */
 @media (min-width: 768px) {
     .searchBar input {
         font-size: 14px;
         border-radius: 10px;
-        padding: 8px;
-        width: 90%;
+        padding: 6px;
+        width: 200px;
         height: 40px;
+        
     }
 
-    .searchBar {
+    /* .searchBar {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 0;
         margin: 0;
         
-    }
+    } */
 
     .searchButton {
         height: 40px;
@@ -98,4 +80,11 @@
     }
 
 
+}
+
+@media (min-width: 1440px) { 
+    .searchBar input {
+        width: 300px;
+        
+    }
 }

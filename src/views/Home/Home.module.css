@@ -28,9 +28,10 @@
 
     .filters{
         display: grid;
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: 3fr 1fr;
         gap: 10px;
-        justify-items: center;
+        justify-items: stretch;
+        margin: 30px 10px 10px 60px ;
     }
 
 }
@@ -42,10 +43,6 @@
 
     .loading{
         width: 40%;
-    }
-
-    .filters{
-        grid-template-columns: repeat(2, 1fr);
     }
 
 }
