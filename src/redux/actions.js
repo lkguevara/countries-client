@@ -18,7 +18,7 @@ export const getCountries = () => async (dispatch) => {
         type: IS_LOADING
     })
     try {
-        const response = await axios.get('http://localhost:3001/countries')
+        const response = await axios.get('/countries')
         dispatch({
             type: GET_COUNTRIES,
             payload: response.data
@@ -32,7 +32,7 @@ export const getCountries = () => async (dispatch) => {
 // * Obtener todas las actividades
 export const getActivities = () => async (dispatch) => {
     try {
-        const response = await axios.get('http://localhost:3001/activities')
+        const response = await axios.get('/activities')
         dispatch({
             type: GET_ACTIVITIES,
             payload: response.data
@@ -46,7 +46,7 @@ export const getActivities = () => async (dispatch) => {
 // * Crear actividad
 export const postActivity = (payload) => async (dispatch) => {
     try {
-      const response = await axios.post('http://localhost:3001/activities', payload); // en esta ruta se hace el post del payload
+      const response = await axios.post('/activities', payload); // en esta ruta se hace el post del payload
     //   dispatch({
     //     type: POST_ACTIVITIES,
     //     payload: response.data,
@@ -66,7 +66,7 @@ export const getNameCountries = (name) => async (dispatch) => {
         type: IS_LOADING
     })
     try {
-        const response = await axios.get(`http://localhost:3001/countries?name=${name}`)
+        const response = await axios.get(`/countries?name=${name}`)
         dispatch({
             type: GET_NAME_COUNTRIES,
             payload: response.data
@@ -84,7 +84,7 @@ export const getCountry = (id) => async (dispatch) => {
     })
     try {
       const response = await axios.get(
-        `http://localhost:3001/countries/${id}`
+        `/countries/${id}`
       )
         dispatch({
             type: GET_COUNTRY,

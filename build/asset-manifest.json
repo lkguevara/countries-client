@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ce4ce67e.css",
+    "main.js": "/static/js/main.d0d68729.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/landing-2.jpg": "/static/media/landing-2.96884169d5538d80d924.jpg",
+    "static/media/404.jpg": "/static/media/404.8dc23ef2ddc4c5a2faf8.jpg",
+    "static/media/antarticMap.png": "/static/media/antarticMap.90a40d1ba168f24d5cb5.png",
+    "static/media/asiaMap.png": "/static/media/asiaMap.5798ae4e7c34ade20e06.png",
+    "static/media/americasMap.png": "/static/media/americasMap.aea9bd570f10ad628c21.png",
+    "static/media/europaMap.png": "/static/media/europaMap.d8004b68da95cc7414b2.png",
+    "static/media/africaMap.png": "/static/media/africaMap.27d67b7c21a878bdbc6b.png",
+    "static/media/oceaniaMap.png": "/static/media/oceaniaMap.5b232a7f0cc4615d405d.png",
+    "static/media/logo-2.svg": "/static/media/logo-2.b0a8a7fe4e5733b145012f44d3414e03.svg",
+    "index.html": "/index.html",
+    "main.ce4ce67e.css.map": "/static/css/main.ce4ce67e.css.map",
+    "main.d0d68729.js.map": "/static/js/main.d0d68729.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ce4ce67e.css",
+    "static/js/main.d0d68729.js"
+  ]
+}
