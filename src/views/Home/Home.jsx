@@ -74,7 +74,6 @@ const Home = () => {
             image = {country.flag}
             name = {country.name}
             continent = {country.continent}
-            population = { country.population}
             activities = {country.activities ? country.activities.map(activity => activity.name) : []}
           />
           )
