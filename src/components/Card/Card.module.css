@@ -33,7 +33,12 @@
     font-weight: normal;
 }
 
- 
+.card__activities{
+    color: #565f81;
+    text-align: center;
+    font-weight: normal;
+}
+
 
 .link{
     text-decoration: none;

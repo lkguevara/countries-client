@@ -24,14 +24,14 @@ const Filters = ({setCurrentPage, setOrder}) => {
 //* handle filter continent
   const handleFilterContinent = (e) => {
     dispatch(filterContinent(e.target.value))
-    console.log(e.target.value)
+    // console.log(e.target.value)
   }
 
 // *handle order country
   const handleOrderCountries = (e) => {
     dispatch(orderCountry(e.target.value))
     console.log(e.target.value)
-    // setear la pagina en 1
+    // se usan para reiniciar el valor de la página actual a 1 y para actualizar la variable order que se utiliza para ordenar los países en la lista
     setCurrentPage(1) 
     setOrder(`order = ${e.target.value}`)
   }
@@ -40,7 +40,6 @@ const Filters = ({setCurrentPage, setOrder}) => {
   const handleOrderPopulation = (e) => {
     dispatch(orderPopulation(e.target.value))
     console.log(e.target.value)
-    // setear la pagina en 1
     setCurrentPage(1) 
     setOrder(`order = ${e.target.value}`)
   }
@@ -81,6 +80,8 @@ const Filters = ({setCurrentPage, setOrder}) => {
           <option value="asc">Population ⬆️</option>
           <option value="desc">Population ⬇️</option>
         </select>
+
+        {/* filtro de actividades */}
 
         <select name='filterActivity' onChange= {handleFilterActivity}>
           <option value="default" disabled = "disabled" >Sort Activity</option>

@@ -29,6 +29,19 @@ export const getCountries = () => async (dispatch) => {
     }
 }
 
+axios.get('/countries')
+.then(response => { 
+    return {
+        type: GET_COUNTRIES, 
+        payload: response.data
+    } 
+    
+})
+.catch()
+
+
+
+
 // * Obtener todas las actividades
 export const getActivities = () => async (dispatch) => {
     try {

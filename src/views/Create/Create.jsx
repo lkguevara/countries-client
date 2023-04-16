@@ -11,7 +11,7 @@ const validate = (state, errorsState) => {
     //! name
     if(!state.name) errors.name = 'The name is required'
     else if(!/^[a-zA-Z\s]/i.test(state.name)) errors.name = 'The name is invalid, only letters'
-    else if(state.name.length < 4) errors.name = 'The name is invalid, min 3 characters'
+    else if(state.name.length < 4) errors.name = 'The name is invalid, min 4 characters'
     else if(state.name.length > 20) errors.name = 'The name is invalid, max 20 characters'
     else errors.name = '';
 
@@ -72,7 +72,7 @@ const Create = () => {
   // dispatch de las actividades
   useEffect(() => {
     dispatch(getCountries())
-  }, [])
+  }, []);
   
 
 // manejo de errores

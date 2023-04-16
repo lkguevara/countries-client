@@ -139,8 +139,6 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: filteredCountries
             };
-    
-
         // *Default
         default:
             return state

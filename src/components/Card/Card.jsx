@@ -9,11 +9,11 @@ const CardCountry = ({name, image, continent, id, population, activities}) => {
                 <img className = {style.card__image} src={image} alt="imagen" />
                 <h2 className={style.card__title}> {name}</h2>
                 <h2 className={style.card__continent}>{continent}</h2>
+                <p className={style.card__continent}><strong>Población:</strong> {population.toLocalString}</p>
                 {
                     activities.length > 0
-                    ? <p className={style.card__population}><strong>Actividades:</strong> {activities.join(', ')}</p>
-                    : <p className={style.card__population}><strong></strong> </p>
-
+                    ? <p className={style.card__activities}><strong>Actividades:</strong> {activities.join(', ')}</p>
+                    : <p className={style.card__activities}><strong></strong> </p>
                 }
 
 

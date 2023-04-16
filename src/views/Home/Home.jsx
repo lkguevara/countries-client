@@ -29,7 +29,7 @@ const Home = () => {
   const [countriesPage, setCountriesPage] = useState(10); // paises por página
   const indexLastCountry = currentPage * countriesPage; // indice del último pais
   const indexFirstCountry = indexLastCountry - countriesPage; // indice del primer pais 
-  const currentCountries = countriesToShow.slice(indexFirstCountry, indexLastCountry); // Const que guardará todos los personajes que vayan a haber por page. El slice lo que hace es cortar el array de paises y nos devuelve un array con los paises de la página actual
+  const currentCountries = countriesToShow.slice(indexFirstCountry, indexLastCountry); // Const que guardará todos los paises que vayan a haber por page. El slice lo que hace es cortar el array de paises y nos devuelve un array con los paises de la página actual
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber); // función para cambiar de página
   const maxPage = Math.ceil(countriesToShow.length / countriesPage); // Cantidad de páginas que hay
